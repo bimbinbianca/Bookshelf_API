@@ -84,8 +84,8 @@ export const getaBook = (req, res) => {
 
 //menampilkan buku spesifik
 export const getaBookById = (req, res) => {
-    const { id } = req.params;
-    const book = books.find((b) => b.id === id);
+    const { bookId } = req.params;
+    const book = books.find((b) => b.id === bookId);
 
     if (book) {
         return res.status(200).json({
@@ -101,7 +101,7 @@ export const getaBookById = (req, res) => {
 
 //API dapat mengubah data buku
 export const editBookById = (req, res) => {
-    const { id } = req.params;
+    const { bookId } = req.params;
     const { name, year, author, summary, publisher, pageCount, 
         readPage, reading } = req.body;
 
@@ -122,7 +122,7 @@ export const editBookById = (req, res) => {
     const updatedAt = new Date().toISOString();
     const finished = pageCount === readPage;
 
-    const index = books.findIndex((n) => n.id === id);
+    const index = books.findIndex((n) => n.id === bookId);
 
     if (index !== -1) {
         books[index] = { ...books[index], name, year, author, summary, publisher, pageCount
@@ -140,8 +140,8 @@ export const editBookById = (req, res) => {
 
 //API dapat menghapus buku
 export const deleteBookById = (req, res) => {
-    const { id } = req.params;
-    const index = books.findIndex((n) => n.id === id);
+    const { bookId } = req.params;
+    const index = books.findIndex((n) => n.id === bookId);
 
     if (index !== -1) {
         books.splice(index, 1);
