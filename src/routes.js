@@ -11,8 +11,10 @@ const routes = express.Router();
 
 routes.post('/books', savingBook);
 routes.get('/books', getaBook);
-routes.get('/books/:id', getaBookById);
-routes.put('/books/:id', editBookById);
-routes.delete('books/:id', deleteBookById);
+routes.get('/books/:bookId', getaBookById);
+routes.put('/books/:bookId', editBookById);
+routes.delete('/books/:bookId', deleteBookById);
 
 export default routes;
+
+
